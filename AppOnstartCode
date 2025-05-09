@@ -1,0 +1,33 @@
+// 1. Load patient data into a collection (using SQL or SharePoint as a data source)
+ClearCollect(
+    colPatientData, 
+    SortByColumns(
+        Filter(SQL_PatientList, !IsBlank(PatientID)), // Filter to remove any blank Patient IDs
+        "LastVisitDate", 
+        Descending // Sort by most recent visit
+    )
+);
+
+// 2. Set default values for any variables (for example, to track the selected patient)
+Set(varSelectedPatient, {});
+
+// 3. Optional: Load critical alerts or notifications (if applicable)
+ClearCollect(
+    colCriticalAlerts,
+    Filter(SQL_PatientList, Criticality = "Critical") // Example: Load only critical patients
+);
+
+// 4. Set a variable to track the current user (optional, for personalized experiences)
+Set(varUserName, User().FullName);
+
+// 5. Initialize other UI-related variables or conditions (e.g., to hide/show UI components based on user roles)
+Set(varIsAdmin, If(User().Email = "admin@example.com", true, false)); // Example: Admin role check
+
+// 6. Optional: Fetch other necessary data (e.g., doctor list, hospital info, etc.)
+ClearCollect(
+    colDoctorList,
+    SQL_Doctors
+);
+
+// 7. Preload other data or configurations (optional, if you have static info)
+Set(varAppVersion, "1.0.0");
