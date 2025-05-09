@@ -1,0 +1,40 @@
+Add a Toggle Control 
+Name: tglCritical
+Label: “Mark as Critical”
+Default Value: varSelectedPatient.Criticality = "Critical"
+Create a Power Automate Flow :
+Text – PatientName
+
+Text – PatientID
+
+Text – DoctorEmail
+
+Text – Status (e.g., Critical)
+
+Text – LastVisitDate
+
+Add "Send an email (V2)" Action
+sub: Critical Alert: @{triggerBody()['PatientName']}
+Body:
+<p>Dear Doctor,</p>
+<p><strong>Patient Name:</strong> @{triggerBody()['PatientName']}<br/>
+<strong>Patient ID:</strong> @{triggerBody()['PatientID']}<br/>
+<strong>Status:</strong> @{triggerBody()['Status']}<br/>
+<strong>Last Visit:</strong> @{triggerBody()['LastVisitDate']}</p>
+
+<p>Please log in to the patient monitoring system to take necessary actions.</p>
+
+<p>Regards,<br/>Hospital Alert System</p>
+
+
+save and test 
+
+SendCriticalAlert.Run(
+   varSelectedPatient.PatientName,
+   varSelectedPatient.PatientID,
+   varSelectedPatient.ConsultingDoctorEmail,
+   "Critical",
+   varSelectedPatient.LastVisitDate
+)
+
+
