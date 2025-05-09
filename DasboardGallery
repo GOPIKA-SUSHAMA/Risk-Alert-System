@@ -1,0 +1,22 @@
+Filter(
+    colPatientData,
+    
+    // Search by name or ID
+    (
+        IsBlank(txtSearch.Text) || 
+        Text(PatientID) = txtSearch.Text || 
+        StartsWith(Lower(PatientName), Lower(txtSearch.Text))
+    ) &&
+    
+    // Filter by doctor name
+    (
+        IsBlank(drpDoctor.Selected.Value) || 
+        ConsultingDoctor = drpDoctor.Selected.Value
+    ) &&
+    
+    // Filter by selected visit date
+    (
+        IsBlank(dtVisitDate.SelectedDate) || 
+        DateValue(LastVisitDate) = DateValue(dtVisitDate.SelectedDate)
+    )
+)
