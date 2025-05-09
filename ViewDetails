@@ -1,0 +1,2 @@
+Set(varSelectedPatient, ThisItem);
+Navigate(scrPatientProfile, ScreenTransition.Fade)
