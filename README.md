@@ -1,11 +1,11 @@
 # ICU Risk Alert & Patient Record App
 
-## 📌 Overview
+##  Overview
 
 This application is designed to help hospital staff efficiently **record and monitor patient data** from both **casualty and ICU wards**. Each patient has an individual profile that displays basic information, test results, and other medical attachments. If a patient is flagged as being in a **critical condition**, the app triggers an **automated alert email** to the designated doctor to ensure timely medical intervention.
 
 
-## 🏥 Who is it for?
+## Who is it for?
 
 - Hospital ward and ICU staff
 - Casualty emergency responders
@@ -13,7 +13,7 @@ This application is designed to help hospital staff efficiently **record and mon
 - Healthcare administrators overseeing patient care
 
 
-## ⚙️ Features
+## Features
 
 - Patient profile creation and editing
 - Uploading attachments (e.g., test results, scans)
@@ -21,7 +21,7 @@ This application is designed to help hospital staff efficiently **record and mon
 - Email alert automation for critical patients
 - Data submission and storage in a secure backend
 
-## 🧰 Technologies Used
+## Technologies Used
 
 - **Microsoft Power Apps** – for building the UI and business logic
 - **Power Automate** – to send automated email alerts
@@ -29,7 +29,7 @@ This application is designed to help hospital staff efficiently **record and mon
 - **SQL Server / SharePoint / Dataverse** – backend for storing patient records
 - **Outlook 365 Connector** – for sending emails to doctors
 
-## 🚀 How to Set It Up
+## How to Set It Up
 
 1. **Import the Power Apps canvas app** from source.
 2. Connect the app to your data source (SQL, SharePoint, or Dataverse).
