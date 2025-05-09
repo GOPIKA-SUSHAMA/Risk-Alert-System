@@ -1,0 +1,27 @@
+Item: varSelectedPatient
+frmPatientDetails.Mode = FormMode.View
+show attachments :Items: Filter(colPatientFiles, PatientID = varSelectedPatient.PatientID)
+download file :Launch(ThisItem.FileURL)
+Upload New Files:  
+Set(
+    varUploadResponse,
+    UploadPatientFile.Run(
+        varSelectedPatient.PatientID,
+        AddMediaButton1.Media
+    )
+);
+Refresh(colPatientFiles)
+Add Comments:
+Patch(
+    colPatientComments,
+    Defaults(colPatientComments),
+    {
+        PatientID: varSelectedPatient.PatientID,
+        Comment: txtNewComment.Text,
+        CommentedBy: User().FullName,
+        CommentedOn: Now()
+    }
+);
+Reset(txtNewComment);
+Notify("Comment added successfully", NotificationType.Success)
+Display Comments in Gallery :Items: Filter(colPatientComments, PatientID = varSelectedPatient.PatientID)
